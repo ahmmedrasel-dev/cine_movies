@@ -11,6 +11,11 @@ const MovieCard = ({ movie }) => {
     setSelectedMovie(null);
   };
 
+  const handleAddToCart = (event, movie) => {
+    event.stopPropagation();
+    console.log(movie);
+  };
+
   const handleMovieSelection = (movie) => {
     setSelectedMovie(movie);
     setShowModal(true);
@@ -21,7 +26,7 @@ const MovieCard = ({ movie }) => {
         <MovieDetailsModal movie={movie} onClose={handleModalClose} />
       )}
       <figure className="p-4 border border-black shadow-sm dark:border-white/10 rounded-xl">
-        <a href="" onClick={() => handleMovieSelection(movie)}>
+        <a href="#" onClick={() => handleMovieSelection(movie)}>
           <img
             className="w-full object-cover"
             src={getUrl(movie.cover)}
@@ -36,6 +41,7 @@ const MovieCard = ({ movie }) => {
             <a
               className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
               href="#"
+              onClick={(e) => handleAddToCart(e, movie)}
             >
               <img src="./assets/tag.svg" alt="" />
               <span>${movie.price} | Add to Cart</span>
