@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import { MovieContext } from "./contexts/MovieContext";
 
 function App() {
-  const { cartData, setCartData } = useState([]);
+  const [cartData, setCartData] = useState([]);
   return (
     <MovieContext.Provider value={{ cartData, setCartData }}>
       <Header />
