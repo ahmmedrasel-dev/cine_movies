@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-hot-toast";
 import checkout from "../assets//icons/checkout.svg";
 import remove from "../assets/delete.svg";
 import { MovieContext } from "../contexts/MovieContext";
@@ -9,12 +10,11 @@ const CardDetails = ({ onClose }) => {
 
   const handleCartDelete = (e, cart) => {
     e.preventDefault();
-    // const restitem = cartData.filter((item) => item.id !== id);
-    // setCartData([...restitem]);
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: { ...cart },
     });
+    toast.success("Remove Item From Cart!");
   };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
