@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { MovieContext } from "../contexts/MovieContext";
 import { getUrl } from "../utills/CineUtills";
 import MovieDetailsModal from "./MovieDetailsModal";
@@ -23,10 +24,9 @@ const MovieCard = ({ movie }) => {
         type: "ADD_TO_CART",
         payload: { ...movie },
       });
+      toast.success(`The movie ${movie.title} Add To Cart`);
     } else {
-      console.error(
-        `The movie ${movie.title} has been added to the cart alreday!`
-      );
+      toast.error(`Alreday The Movie has been added to the cart!`);
     }
   };
 
